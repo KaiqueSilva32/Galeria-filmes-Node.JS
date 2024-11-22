@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/style.css"
+</head>
+<header>
+    CineK
+</header>
+<body>
+    <div class="container mt-4">
+        <div class="card">
+            <div class="card-header text-center">
+                <h1>Filmes em cartaz</h1>
+            </div>
+            <div class="col-md-10 m-auto">
+                <form action="/upload" method="post" enctype="multipart/form-data">
+                    <label>Cartaz do Filme:</label>
+                    <input type="file" name="file" class="form-control" required><br><br>
+                    <label>Nome do Filme:</label>
+                    <input type="text" name="nome" class="form-control" required><br><br>
+                    <label>Ano do Filme:</label>
+                    <input type="number" name="ano" class="form-control" required><br><br>
+                    <input type="submit" value="Enviar" class="btn btn-success w-100">
+                </form>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <% imagens.forEach(imagem => { %> 
+                    <div class="col-md-3 m-auto" id="div-imgs">
+                        <img src="/uploads/<%= imagem.file %>" alt="Imagem" class="imgs"">
+                        <div class="nomes">
+                            <h6><strong> Titulo:</strong> <%= imagem.nome %></h6>
+                            <h6><strong> Ano:</strong> <%= imagem.ano %></h6>
+                        </div>
+                    </div>
+                    <% }) %>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    
+</body>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</html>
